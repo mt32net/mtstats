@@ -13,7 +13,7 @@ object GraphQLRequest {
     operator fun invoke(query: String, variables: Map<String, String>): Request {
         val variableString = formatter.encodeToString(variables)
         return Request(Method.POST, "https://api.github.com/graphql")
-            .header("Authorization", "Bearer $token")
+            .header("Authorization", "Bearer ${config.accessToken}")
             .header("Content-Type", "application/json")
             .body("{\"query\":\"$query\", \"variables\": $variableString\"")
     }
