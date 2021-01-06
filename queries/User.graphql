@@ -1,0 +1,38 @@
+query GetUser($username: String!) {
+    user(login: $username) {
+        login
+        name
+        repositories(last: 100) {
+            totalCount
+            nodes {
+                id
+                stargazers {
+                    totalCount
+                }
+            }
+        }
+        repositoriesContributedTo(last: 100) {
+            totalCount
+            nodes {
+                id
+                stargazers {
+                    totalCount
+                }
+            }
+        }
+        organizations(last: 100) {
+            totalCount
+            nodes {
+                repositories(last: 100) {
+                    totalCount
+                    nodes {
+                        id
+                        stargazers {
+                            totalCount
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
