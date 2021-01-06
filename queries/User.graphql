@@ -1,38 +1,38 @@
 query GetUser($username: String!) {
+    rateLimit {
+        cost
+        limit
+        remaining
+    }
     user(login: $username) {
+        contributionsCollection {
+            totalCommitContributions
+            totalIssueContributions
+            totalPullRequestContributions
+        }
+        starredRepositories {
+            totalCount
+        }
+        following {
+            totalCount
+        }
         login
         name
-        repositories(last: 100) {
+        status {
+            message
+        }
+        company
+        repositories(last: 50) {
             totalCount
             nodes {
-                id
-                stargazers {
-                    totalCount
-                }
+                stargazerCount
             }
         }
-        repositoriesContributedTo(last: 100) {
+        repositoriesContributedTo {
             totalCount
-            nodes {
-                id
-                stargazers {
-                    totalCount
-                }
-            }
         }
-        organizations(last: 100) {
+        organizations {
             totalCount
-            nodes {
-                repositories(last: 100) {
-                    totalCount
-                    nodes {
-                        id
-                        stargazers {
-                            totalCount
-                        }
-                    }
-                }
-            }
         }
     }
 }
