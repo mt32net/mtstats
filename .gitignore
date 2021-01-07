@@ -1,2 +1,5 @@
 # Project exclude paths
 /.gradle/
+config
+config.json
+config2.json
