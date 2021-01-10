@@ -22,7 +22,6 @@ val config: Config = Json {  }.decodeFromString(File("config.json").readText())
 
 fun main() {
     println("Starting...")
-
     routes(
         "/" bind GET to { Response(Status.OK).body("ok") },
         "/gh/{$pathName}" bind GET to { req ->
